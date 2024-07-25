@@ -21,8 +21,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::controller(HomeController::class)->middleware('auth')->group(function () {
-    Route::get('/home', 'index')->name('home');
-    Route::post('/appointments', 'filterData')->name('appointments.index');
-    Route::post('/make-appointment', 'store')->name('make.appointment');
-    Route::get('/patient/{id}', '')->name('patient.page');
+    Route::get('/home', 'index')->name('home'); // home page
+    Route::post('/appointments', 'filterData')->name('appointments.index'); // THIS FOR FILTER THE APPOINTMENT
+    Route::post('/make-appointment', 'store')->name('make.appointment'); // CREATE THE APPOINTMENT
+    Route::post('/status-update', 'updateStatus')->name('statusUpdate'); // CHANGE STATUS
 });

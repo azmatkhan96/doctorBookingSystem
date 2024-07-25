@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('time', 20);
             $table->unsignedBigInteger('statusID')->default(1);
             $table->foreign('statusID')->references('id')->on('mst_statuses')->onDelete('cascade');
+            $table->unsignedBigInteger('userID');
+            $table->foreign('userID')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

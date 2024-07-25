@@ -131,13 +131,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ route('statusUpdate') }}">
                         @csrf
                         <input type="hidden" name="clicked_row_id" id="clicked_row_id" value="">
-                        <select class="form-control">
+                        <select class="form-control" name="selectedStatus">
                             @foreach ($status as $val)
                                 @if (Auth::user()->roleID == 2 && $val->status != 'approve' && $val->status != 'pending')
-                                    <option value="{{ $val->id }}">{{ $val->status }}</option>
+                                    <option  value="{{ $val->id }}">{{ $val->status }}
+                                    </option>
                                 @elseif(Auth::user()->roleID == 1 && $val->status != 'postpone' && $val->status != 'pending')
                                     <option value="{{ $val->id }}">{{ $val->status }}</option>
                                 @endif
